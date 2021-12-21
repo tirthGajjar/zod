@@ -221,7 +221,7 @@ export class ZodError<T = any> extends Error {
     mapper: (issue: ZodIssue) => U = (issue: ZodIssue) => issue.message as any
   ): {
     formErrors: U[];
-    fieldErrors: { [k: string]: U[] };
+    fieldErrors: { [k in keyof T]: U[] };
   } => {
     const fieldErrors: any = {};
     const formErrors: U[] = [];
